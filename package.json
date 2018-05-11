@@ -1,0 +1,8 @@
+{
+  "name": "ac-notification-bot-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/odanado/ac-notification-bot-ts",
+  "author": "odan",
+  "license": "MIT"
+}

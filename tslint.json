@@ -17,6 +17,6 @@
         "prefix": "I"
       }
     ],
-    "await-promise": true
+    "semicolon": true
   }
 }

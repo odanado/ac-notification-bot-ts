@@ -6,7 +6,9 @@
   "author": "odan",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "lint": "tslint --config tslint.json --project tsconfig.json",
+    "build": "webpack --mode=production",
+    "dev": "webpack --watch --mode=development"
   },
   "devDependencies": {
     "@types/google-apps-script": "^0.0.22",

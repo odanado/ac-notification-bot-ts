@@ -1,8 +1,18 @@
 {
   "name": "ac-notification-bot-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "repository": "https://github.com/odanado/ac-notification-bot-ts",
   "author": "odan",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@types/google-apps-script": "^0.0.22",
+    "ts-loader": "^4.3.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
+  }
 }

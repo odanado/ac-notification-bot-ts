@@ -1,3 +1,22 @@
 {
-    "extends": ["tslint-config-standard"]
+  "extends": [
+    "tslint-config-standard",
+    "tslint-consistent-codestyle"
+  ],
+  "rules": {
+    "naming-convention": [
+      true,
+      {
+        "type": "member",
+        "format": "camelCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+      {
+        "type": "interface",
+        "prefix": "I"
+      }
+    ],
+    "await-promise": true
+  }
 }

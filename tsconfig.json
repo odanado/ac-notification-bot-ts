@@ -3,7 +3,13 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "module": "es6",
+    "lib": ["es6", "dom"],
     "target": "es5",
+    "types": ["reflect-metadata"],
+    // inject
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // strict option
     "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": true,

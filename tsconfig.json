@@ -5,7 +5,11 @@
     "module": "es6",
     "lib": ["es6", "dom"],
     "target": "es5",
-    "types": ["reflect-metadata"],
+    "types": [
+      "reflect-metadata",
+      "jest"
+    ],
+    "moduleResolution": "node",
     // inject
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -23,9 +27,17 @@
     "allowUnusedLabels": false,
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "node_modules/@types"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "my-tsconfig.json"
+      }
+    }
+  }
 }

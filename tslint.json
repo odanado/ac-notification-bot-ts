@@ -8,13 +8,21 @@
       true,
       {
         "type": "member",
-        "format": "camelCase",
+        "format": ["camelCase", "UPPER_CASE"],
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid"
       },
       {
         "type": "interface",
         "prefix": "I"
+      },
+      {
+        "type": "property",
+        "modifiers": [
+          "static",
+          "const"
+        ],
+        "format": "UPPER_CASE"
       }
     ],
     "semicolon": true

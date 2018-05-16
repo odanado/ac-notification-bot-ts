@@ -42,6 +42,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "inversify": "^4.13.0",
-    "reflect-metadata": "^0.1.12"
+    "reflect-metadata": "^0.1.12",
+    "typed-slack": "^0.1.3"
   }
 }

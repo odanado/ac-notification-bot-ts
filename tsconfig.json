@@ -7,6 +7,7 @@
     "target": "es5",
     "types": [
       "reflect-metadata",
+      "google-apps-script",
       "jest"
     ],
     "moduleResolution": "node",
@@ -36,7 +37,7 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "my-tsconfig.json"
+        "tsConfigFile": "tsconfig.json"
       }
     }
   }

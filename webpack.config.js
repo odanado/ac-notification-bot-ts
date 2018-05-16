@@ -1,4 +1,5 @@
 const path = require('path');
+const GasPlugin = require("gas-webpack-plugin");
 
 module.exports = {
   entry: './src/index.ts',
@@ -18,5 +19,8 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  plugins: [
+    new GasPlugin()
+  ]
 };

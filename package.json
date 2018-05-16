@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/google-apps-script": "^0.0.22",
     "@types/jest": "^22.2.3",
+    "gas-webpack-plugin": "^0.3.0",
     "jest": "^22.4.3",
     "ts-jest": "^22.4.6",
     "ts-loader": "^4.3.0",

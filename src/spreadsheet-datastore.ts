@@ -15,7 +15,7 @@ export class SpreadSheetDatastore implements IDatastore {
     this.getLastACEpochRange().setValue(lastACEpoch);
   }
   loadUsers (): String[] {
-    return this.sheet.getRange(2, 1, this.sheet.getLastRow(), 1).getValues()[0].map(x => String(x));
+    return this.sheet.getRange(2, 1, this.sheet.getLastRow(), 1).getValues().map(x => String(x[0]));
   }
 
   private getLastACEpochRange (): GoogleAppsScript.Spreadsheet.Range {

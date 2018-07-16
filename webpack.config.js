@@ -1,5 +1,6 @@
 const path = require('path');
 const GasPlugin = require("gas-webpack-plugin");
+const es3ifyPlugin = require('es3ify-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -17,10 +18,11 @@ module.exports = {
     extensions: [ '.ts', '.js' ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'code.gs',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new GasPlugin()
+    new GasPlugin(),
+    new es3ifyPlugin()
   ]
 };

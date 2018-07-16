@@ -1,7 +1,37 @@
-console.log(10);
+import { SpreadSheetDatastore } from './spreadsheet-datastore';
+import { SlackNotification } from './slack-notification';
+import { AtcoderAPI } from './atcoder-api';
 
-const a = '10';
+global.slack = () => {
+  const webhookUrl = PropertiesService.getScriptProperties().getProperty('webhook_url');
+  Logger.log(`webhook url = ${webhookUrl}`);
+  const datastore = new SpreadSheetDatastore();
+  const notification = new SlackNotification(
+    webhookUrl!,
+    'notice-ac',
+    ':ac:');
+  const api = new AtcoderAPI();
 
-const b = 10;
+  let lastACEpoch = datastore.loadLastACEpoch();
+  if (lastACEpoch === -1) {
+    lastACEpoch = Date.now() / 1000 - 60 * 10;
+  }
+  Logger.log(`last ac epoch = ${lastACEpoch}`);
 
-import { poyo } from './poyo';
+  const users = datastore.loadUsers();
+  Logger.log(`users = ${users}`);
+
+  const acResults = api.fetchNewAC(users, lastACEpoch);
+
+  acResults.forEach(result => {
+    const url = `<${result.problemUrl}|${result.problemName}>`;
+    notification.notify(`${result.userId} が ${url} を ${result.language} でACしたよ！`);
+  });
+
+  if (acResults.length > 0) {
+    lastACEpoch = Math.max(...acResults.map(x => x.epoch as number));
+
+    datastore.saveLastACEpoch(lastACEpoch);
+  }
+
+};

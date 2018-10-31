@@ -1,7 +1,6 @@
 service:
   name: ac-notification-bot-ts
 
-# Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
 
@@ -10,8 +9,16 @@ provider:
   runtime: nodejs8.10
   region: ap-northeast-1
   profile: ac-notification-bot-ts
+  timeout: 60
+  environment:
+    WEBHOOK_URL: ${env:WEBHOOK_URL}
+    CHANNEL: ${env:CHANNEL}
+    EMOJI: ${env:EMOJI}
+    KEY_FILE: ${env:KEY_FILE}
+    SPREADSHEET_ID: ${env:SPREADSHEET_ID}
+    SHEET_RANGE_USERS: ${env:SHEET_RANGE_USERS}
+    SHEET_RANGE_LAST_AC_EPOCH: ${env:SHEET_RANGE_LAST_AC_EPOCH}
 
 functions:
   acNotification:
     handler: handler.acNotification
-

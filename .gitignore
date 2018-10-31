@@ -12,3 +12,4 @@ jspm_packages
 !.googleapis/.gitkeep
 
 .envrc
+.env

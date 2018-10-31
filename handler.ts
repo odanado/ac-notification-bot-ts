@@ -26,7 +26,8 @@ export const hello: Handler = async (event: APIGatewayEvent, context: Context, c
 }
 
 export const acNotification: Handler = async () => {
-  console.log('poyo')
+  console.log('poyo');
+  console.log(process.env);
   const store = new SpreadSheetDatastore(KEY_FILE, SPREADSHEET_ID, SHEET_RANGE_USERS, SHEET_RANGE_LAST_AC_EPOCH);
   const slack = new SlackNotification(WEBHOOK_URL, CHANNEL, EMOJI)
 

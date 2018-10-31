@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IOnlinejudgeAPI, ACResult } from './interface';
 
-export default class AtCoderAPI implements IOnlinejudgeAPI {
+export class AtCoderAPI implements IOnlinejudgeAPI {
   private static ENDPOINT = 'http://kenkoooo.com/atcoder/atcoder-api/results';
 
   async fetchNewAC (users: String[], lastACEpoch: Number): Promise<ACResult[]> {

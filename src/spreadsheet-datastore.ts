@@ -3,7 +3,7 @@ import { GoogleAuth, JWT } from 'google-auth-library';
 
 import { IDatastore } from './interface/datastore';
 
-export default class SpreadSheetDatastore implements IDatastore {
+export class SpreadSheetDatastore implements IDatastore {
   private auth: GoogleAuth;
   private client: JWT;
   private scopes = ['https://www.googleapis.com/auth/spreadsheets'];

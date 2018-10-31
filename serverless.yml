@@ -12,9 +12,6 @@ provider:
   profile: ac-notification-bot-ts
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          method: get
-          path: hello
+  acNotification:
+    handler: handler.acNotification
+

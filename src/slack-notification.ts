@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { INotification } from './interface';
 
-export default class SlackNotification implements INotification {
+export class SlackNotification implements INotification {
   constructor (
     private readonly WEBHOOK_URL: string,
     private readonly CHANNEL: String,

@@ -15,6 +15,6 @@ export class SlackNotification implements INotification {
       'icon_emoji': this.EMOJI
     };
 
-    axios.post(this.WEBHOOK_URL, payload)
+    await axios.post(this.WEBHOOK_URL, payload)
   }
 }

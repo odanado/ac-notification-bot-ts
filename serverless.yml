@@ -9,7 +9,7 @@ provider:
   runtime: nodejs8.10
   region: ap-northeast-1
   profile: ac-notification-bot-ts
-  timeout: 60
+  timeout: 20
   environment:
     WEBHOOK_URL: ${env:WEBHOOK_URL}
     CHANNEL: ${env:CHANNEL}

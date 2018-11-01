@@ -33,7 +33,7 @@ export class Bot {
     });
 
     if (texts) {
-      this.notification.notify(texts.join('\n'));
+      await this.notification.notify(texts.join('\n'));
       console.log(texts.join('\n'))
     }
 

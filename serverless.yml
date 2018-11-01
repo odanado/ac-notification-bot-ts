@@ -22,3 +22,8 @@ provider:
 functions:
   acNotification:
     handler: handler.acNotification
+    events:
+      - schedule: cron(0 9 * * ? *)
+      - schedule: cron(0 12 * * ? *)
+      - schedule: cron(0 20 * * ? *)
+      - schedule: cron(0 23 * * ? *)

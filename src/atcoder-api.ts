@@ -1,9 +1,10 @@
-import { IOnlinejudgeAPI, ACResult } from './interface/online-judge-api';
+import axios from 'axios';
+import { IOnlinejudgeAPI, ACResult } from './interface';
 
-export class AtcoderAPI implements IOnlinejudgeAPI {
+export class AtCoderAPI implements IOnlinejudgeAPI {
   private static ENDPOINT = 'http://kenkoooo.com/atcoder/atcoder-api/results';
 
-  fetchNewAC (users: String[], lastACEpoch: Number): ACResult[] {
+  async fetchNewAC (users: String[], lastACEpoch: Number): Promise<ACResult[]> {
     const ret: ACResult[] = [];
 
     const qparams: String[] = [];
@@ -11,9 +12,8 @@ export class AtcoderAPI implements IOnlinejudgeAPI {
     if (users.length > 1) {
       qparams.push(`rivals=${users.slice(1).join()}`);
     }
-    const url = AtcoderAPI.ENDPOINT + '?' + qparams.join('&');
-    const response = UrlFetchApp.fetch(url).getContentText();
-    let data = JSON.parse(response);
+    const url = AtCoderAPI.ENDPOINT + '?' + qparams.join('&');
+    let { data }: { data: any[] } = await axios.get(url);
 
     data = data.filter(x => x.epoch_second > lastACEpoch);
     data = data.filter(x => x.result === 'AC');

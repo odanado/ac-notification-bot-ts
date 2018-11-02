@@ -1,28 +1,35 @@
 const path = require('path');
-const GasPlugin = require("gas-webpack-plugin");
-const es3ifyPlugin = require('es3ify-webpack-plugin');
+const slsw = require('serverless-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const entries = {};
+
+Object.keys(slsw.lib.entries).forEach(
+  key => (entries[key] = ['./source-map-install.js', slsw.lib.entries[key]])
+);
 
 module.exports = {
-  entry: './src/index.ts',
+  mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
+  entry: entries,
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+  },
+  output: {
+    libraryTarget: 'commonjs',
+    path: path.join(__dirname, '.webpack'),
+    filename: '[name].js',
+  },
   target: 'node',
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
-  },
-  resolve: {
-    extensions: [ '.ts', '.js' ]
-  },
-  output: {
-    filename: 'code.gs',
-    path: path.resolve(__dirname, 'dist')
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      { test: /\.tsx?$/, loader: 'ts-loader' },
+    ],
   },
   plugins: [
-    new GasPlugin(),
-    new es3ifyPlugin()
+    new CopyWebpackPlugin([
+      '.googleapis/*'
+    ])
   ]
 };

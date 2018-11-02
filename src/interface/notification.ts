@@ -1,3 +1,3 @@
 export interface INotification {
-  notify (text: String): void;
+  notify (text: String): Promise<void>;
 }

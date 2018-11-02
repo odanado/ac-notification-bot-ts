@@ -1,6 +1,6 @@
-
 export interface IDatastore {
-  loadLastACEpoch (): Number;
-  saveLastACEpoch (lastACEpoch: Number);
-  loadUsers (): String[];
+  connect(): Promise<void>;
+  loadLastACEpoch (): Promise<Number>;
+  saveLastACEpoch (lastACEpoch: Number): Promise<void>;
+  loadUsers (): Promise<String[]>;
 }

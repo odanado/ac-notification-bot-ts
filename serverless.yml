@@ -1,0 +1,29 @@
+service:
+  name: ac-notification-bot-ts
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-northeast-1
+  profile: ac-notification-bot-ts
+  timeout: 20
+  environment:
+    WEBHOOK_URL: ${env:WEBHOOK_URL}
+    CHANNEL: ${env:CHANNEL}
+    EMOJI: ${env:EMOJI}
+    KEY_FILE: ${env:KEY_FILE}
+    SPREADSHEET_ID: ${env:SPREADSHEET_ID}
+    SHEET_RANGE_USERS: ${env:SHEET_RANGE_USERS}
+    SHEET_RANGE_LAST_AC_EPOCH: ${env:SHEET_RANGE_LAST_AC_EPOCH}
+
+functions:
+  acNotification:
+    handler: handler.acNotification
+    events:
+      - schedule: cron(0 18 * * ? *) # 9時
+      - schedule: cron(0 21 * * ? *) # 12時
+      - schedule: cron(0 5 * * ? *) # 20時
+      - schedule: cron(0 8 * * ? *) # 23時

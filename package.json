@@ -10,7 +10,7 @@
     "@odanado/atcoder-api": "^0.0.2",
     "axios": "^0.18.0",
     "google-auth-library": "^2.0.0",
-    "googleapis": "^34.0.0"
+    "googleapis": "^39.1.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.1",
